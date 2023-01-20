@@ -9,6 +9,10 @@
 
 define('PLUGIN_DIR', plugin_dir_path( __FILE__ ));
 
+if(!class_exists('Zoom_Meeting')) {
+	require_once PLUGIN_DIR.'includes/class-zoom.php';
+}
+
 
 if(!class_exists('Zoom_Meeting')) {
 	require_once PLUGIN_DIR.'includes/class-zoom.php';
