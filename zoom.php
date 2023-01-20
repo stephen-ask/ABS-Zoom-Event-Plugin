@@ -2,9 +2,9 @@
 
 /**
  * Plugin Name: ABS Zoom Event Plugin
- * Version: 1.0
+ * Version: 1.0.0
  * Description: Zoom Event Plugin developed by Absolute App Labs
- * Author: ASK <stepheninbox0@gmail.com>
+ * Author: ASK stepheninbox0@gmail.com
  */
 
 define('PLUGIN_DIR', plugin_dir_path( __FILE__ ));
