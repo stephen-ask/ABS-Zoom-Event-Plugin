@@ -2,6 +2,10 @@
 namespace Zoom\Base;
 
 class base {
+	function __construct()
+	{
+		$this->register_cpt();
+	}
     public function rest_is_user_logged_in($request) {
 		$authorization = $request->get_header('authorization');
 	
@@ -19,11 +23,10 @@ class base {
 	}
 	public function register_cpt() {
 		add_action( 'init', function() {
-			
 			$cpts = array(
 				'abs_event' => array(
-					'singular' => 'Meeting',
-					'plular' => 'Meetings',
+					'singular' => 'Event Meeting',
+					'plular' => 'Event Meetings',
 					'description' => 'Meetings',
 					'slug' => 'abs_event',
 					'taxonomies' => array(),
@@ -57,12 +60,12 @@ class base {
 				
 				// Set other options for Custom Post Type  
 				$args = array(
-					'label'               => __( 'movies', 'abs_zoom_event' ),
+					'label'               => __( $cpt['plular'] , 'abs_zoom_event' ),
 					'description'         => __( $cpt['description'], 'abs_zoom_event' ),
 					'labels'              => $labels,
 					'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', ),
 					'taxonomies'          => $cpt['taxonomies'],
-					'hierarchical'        => false,
+					'hierarchical'        => true,
 					'public'              => true,
 					'show_ui'             => true,
 					'show_in_menu'        => true,
@@ -81,7 +84,6 @@ class base {
 				// Registering your Custom Post Type
 				register_post_type( $key , $args );
 			}
-			
 		});
 
 	}
